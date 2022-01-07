@@ -520,5 +520,165 @@ namespace ApplicationsOfBST
             curr.rChild = CreateBinaryTree(arr, mid + 1, end);
             return curr;
         }
+
+        //BST node işlemleri
+        public void InsertNode(int val)
+        {
+            root = InsertNode(root, val);
+        }
+        private Node InsertNode(Node node, int val)
+        {
+            if (node == null)
+                node = new Node(val, null, null);
+            else
+            {
+                if (node.value > val)
+                    node.lChild = InsertNode(node.lChild, val);
+                else
+                    node.rChild = InsertNode(node.rChild, val);
+            }
+            return node;
+        }//Time Complexity:O(n), Space Complexity: O(n) 
+        public bool Find(int val)
+        {
+            Node curr = root;
+            while (curr != null)
+            {
+                if (root.value == val)
+                    return true;
+                else if (root.value > val)
+                    curr = root.lChild;
+                else
+                    curr = root.rChild;
+            }
+            return false;
+        }//Time Complexity:O(n), Space Complexity: O(1)
+        public int FindMin()//en küçük değer en sondaki left child node olmalı
+        {
+            Node curr = root;
+            if (curr == null)
+                return int.MaxValue;
+
+            while (curr.lChild != null)
+            {
+                curr = curr.lChild;
+            }
+            return curr.value;
+        }
+        private Node FindMinNode(Node curr)
+        {
+            Node node = curr;
+            if (node == null)
+                return null;
+            while (node.lChild != null)
+            {
+                node = node.lChild;
+            }
+            return node;
+        }
+        public int FindMax(int val)
+        {
+            Node curr = root;
+            if (root == null)
+                return int.MinValue;
+
+            while (curr.rChild != null)
+            {
+                curr = curr.rChild;
+            }
+
+            return curr.value;
+        }
+        private Node FindMaxNode(Node curr)
+        {
+            Node node = curr;
+            if (node == null)
+                return null;
+            while (node.rChild != null)
+            {
+                node = node.rChild;
+            }
+
+            return node;
+        }//Time Complexity:O(n), Space Complexity: O(1) 
+        public bool IsBST()//BST is a valid BST or not
+        {
+            return IsBST(root, int.MinValue, int.MaxValue);
+        }
+        private bool IsBST(Node curr, int minValue, int maxValue)
+        {
+            if (curr == null)
+                return true;
+
+            if (curr.value < minValue || curr.value > maxValue)
+                return false;
+
+            return IsBST(curr.lChild, minValue, curr.value) && IsBST(curr.rChild, curr.value, maxValue);
+        }//Time Complexity:O(n), Space Complexity: O(n)for stack.
+
+        public void DeleteNode(int val)
+        {
+            root = DeleteNode(root, val);
+        }//Delete Node
+        private Node DeleteNode(Node node, int val)
+        {
+            Node temp = null;
+            if(node != null)
+            {
+                if (node.value == val)
+                {
+                    if (node.lChild == null && node.rChild == null)
+                        return null;
+                    else
+                    {
+                        if (node.lChild == null)
+                        {
+                            temp = node.rChild;
+                            return temp;
+                        }
+                        if (node.rChild == null)
+                        {
+                            temp = node.lChild;
+                            return temp;
+                        }
+
+                        Node minNode = FindMinNode(node.rChild);
+                        int minValue = minNode.value;
+                        node.value = minValue;
+                        node.rChild = DeleteNode(node.rChild, minValue);
+                    }
+                }
+                else
+                {
+                    if (node.value > val)
+                    {
+                        node.lChild = DeleteNode(node.lChild, val);
+                    }
+                    else
+                    {
+                        node.rChild = DeleteNode(node.rChild, val);
+                    }
+                }
+            }
+            return node;
+        }
+        public int LcaBST(int first, int second)//Least common ancestor
+        {
+            return LcaBST(root, first, second);
+        }
+        private int LcaBST(Node curr, int first, int second)
+        {
+            if (curr == null)
+                return int.MaxValue;
+
+            if (curr.value > first && curr.value > second)
+                return LcaBST(curr.lChild, first, second);
+
+            if (curr.value < first && curr.value < second)
+                return LcaBST(curr.rChild, first, second);
+
+            return curr.value;
+        }
+
     }
 }
