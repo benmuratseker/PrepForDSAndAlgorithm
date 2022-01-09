@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationsOfQueue", "Appl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationsOfBST", "ApplicationsOfBST\ApplicationsOfBST.csproj", "{4E001782-0634-46C3-8A2B-743253790736}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationsOfHeap", "ApplicationsOfHeap\ApplicationsOfHeap.csproj", "{7F993B20-8B95-4C6F-9E48-AB59F4BF6BB8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{4E001782-0634-46C3-8A2B-743253790736}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E001782-0634-46C3-8A2B-743253790736}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E001782-0634-46C3-8A2B-743253790736}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F993B20-8B95-4C6F-9E48-AB59F4BF6BB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F993B20-8B95-4C6F-9E48-AB59F4BF6BB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F993B20-8B95-4C6F-9E48-AB59F4BF6BB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F993B20-8B95-4C6F-9E48-AB59F4BF6BB8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
