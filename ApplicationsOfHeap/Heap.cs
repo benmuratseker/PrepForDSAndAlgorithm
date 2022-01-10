@@ -89,6 +89,31 @@ namespace ApplicationsOfHeap
                 throw new System.InvalidOperationException();
             return arr[0];
         }
+        public void add(int val)
+        {
+            if (Count == arr.Length)
+                doubleSize();
+
+            arr[Count++] = val;
+            ProclateUp(Count - 1);
+        }
+        private void doubleSize()
+        {
+            int[] old = arr;
+            arr = new int[arr.Length * 2];
+            Array.Copy(old, 0, arr, 0, Count);
+        }
+        public int remove()
+        {
+            if (Count == 0)
+                throw new System.InvalidOperationException();
+
+            int value = arr[0];
+            arr[0] = arr[Count - 1];
+            Count--;
+            ProclateDown(0);
+            return value;
+        }
     }
     
 }

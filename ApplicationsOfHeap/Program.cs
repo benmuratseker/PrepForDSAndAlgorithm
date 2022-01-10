@@ -10,9 +10,15 @@ namespace ApplicationsOfHeap
     {
         static void Main(string[] args)
         {
-            int[] arr = new int[] { 1, 2, 3, 4, 5, 6, 7, 8 };
-            var heap = new Heap(arr);
-
+            int[] a = new int[] { 1, 9, 6, 7, 8, 0, 2, 4, 5, 3 };
+            Heap hp = new Heap(a, false);
+            hp.add(100);
+            
+            while (hp.isEmpty() == false)
+            {
+                Console.Write(hp.remove() + " ");
+            }
+            Console.ReadLine();
         }
     }
 }
